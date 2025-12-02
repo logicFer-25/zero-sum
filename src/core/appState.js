@@ -38,4 +38,5 @@ class AppState {
     }
 }
 
-export const appState = new AppState();
+
+export const stateGlobal = new AppState();
