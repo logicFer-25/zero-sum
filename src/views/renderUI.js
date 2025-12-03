@@ -1,3 +1,4 @@
+import { renderGameOneView } from "./gameOneView.js";
 import { renderHomeView } from "./interface.js";
 
 
@@ -12,8 +13,13 @@ export function renderUI(view) {
     };
 
 
-    if (view === 1) {};
+    if (view === 1) {
+        renderGameOneView(appDiv);
+        return;
+    };
 
 
-    if (view === 3) {};
+    if (view === 3) {
+        return;
+    };
 }
