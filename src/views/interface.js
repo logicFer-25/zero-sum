@@ -17,13 +17,13 @@ export function renderHomeView(appDiv) {
                 <article class="home-mode-card">
                     <h2 class="home-mode-title"> Game mode 1 </h2>
                     <p class="home-mode-description">  </p>
-                    <button class="home-mode-btn"> Play Game </button>
+                    <button class="home-mode-btn home-mode-btn--one"> Play Game </button>
                 </article>
 
                 <article class="home-mode-card">
                     <h2 class="home-mode-title"> Game mode 2 </h2>
                     <p class="home-mode-description">  </p>
-                    <button class="home-mode-btn"> Play Game </button>
+                    <button class="home-mode-btn home-mode-btn--two"> Play Game </button>
                 </article>
 
             </section>
