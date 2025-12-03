@@ -1,5 +1,5 @@
 import { renderGameOneView } from "./gameOneView.js";
-import { renderHomeView } from "./interface.js";
+import { renderHomeView } from "./homeView.js";
 
 
 export function renderUI(view) {

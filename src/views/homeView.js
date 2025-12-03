@@ -1,3 +1,5 @@
+
+
 export function renderHomeView(appDiv) {
     appDiv.innerHTML = "";
 
@@ -7,23 +9,25 @@ export function renderHomeView(appDiv) {
     container.innerHTML = `
         <header class="home-header">
             <h1 class="home-title"> Zero Sum </h1>
-            <a class="home-link" href="#" target="_blank" rel="noopener noreferrer">  </a>
+            <a class="home-link" href="https://github.com/logicFer-25/zero-sum" target="_blank" rel="noopener noreferrer">
+                <img src="../../assets/img/github-mark-white.svg" width="32px">
+            </a>
         </header>
 
         <main class="home-main">
 
             <section class="home-modes">
 
-                <article class="home-mode-card">
-                    <h2 class="home-mode-title"> Game mode 1 </h2>
-                    <p class="home-mode-description">  </p>
-                    <button class="home-mode-btn home-mode-btn--one"> Play Game </button>
+                <article class="home-mode-card home-mode-card--one">
+                    <h2 class="home-mode-title"> Card Duel </h2>
+                    <p class="home-mode-description">
+                        Select a card, reveal it at the same time as your opponent, and win following the rock-paper-scissors rules.
+                    </p>
                 </article>
 
-                <article class="home-mode-card">
+                <article class="home-mode-card  home-mode-card--two">
                     <h2 class="home-mode-title"> Game mode 2 </h2>
                     <p class="home-mode-description">  </p>
-                    <button class="home-mode-btn home-mode-btn--two"> Play Game </button>
                 </article>
 
             </section>

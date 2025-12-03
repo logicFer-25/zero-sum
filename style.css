@@ -1,13 +1,38 @@
 
 
-@font-face {
-    font-family: 'Roboto';
-    src: local('Roboto') url('/Fonts/Roboto-VariableFont_wdth,wght.ttf');
+:root {
+  --fs-h1: 2.5rem;
+  --fs-h3: 1.5rem;
+  --fs-body: 1rem;
+  --fs-desc: 0.95rem;
+  --fs-small: 0.85rem;
+  --fs-mini: 0.75rem;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
 }
+
+
+
+@font-face {
+    font-family: 'Montserrat';
+    src: local('Montserrat'),
+         url('/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
 
 :root {
     --ui-bg: #191a2e;
-    --ui-border: #04bef2;
+    --ui-border: #7b87a1;
     --ui-shadow: #8671dd;
     --ui-text: #cecaca;
 
@@ -16,11 +41,180 @@
 
     --mode2-bg: #0f1325;
     --mode2-shadow: #5c7cff;
+
+    --ui-shadow-soft: 
+    0 0 10px var(--ui-shadow),
+    0 0 20px var(--ui-shadow),
+    0 0 300px var(--ui-shadow);
+    --ui-shadow-slect: #5596be;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--ui-bg);
+    color: var(--ui-text);
+    min-height: 100dvh;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    background: none;
+}
+
+#app {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 
 /* ========================================================================== */
 /*  INTERFACE                                                                 */
 /* ========================================================================== */
+#home-view {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    padding:  var(--space-4) var(--space-5);
+    height: 60px;
+}
+
+.home-title {
+    font-size: var(--fs-h1);
+    text-align: center;
+    text-shadow: var(--ui-shadow-soft);
+}
+.home-link {
+    text-decoration: none;
+    font-size: var(--fs-body);
+    padding: var(--space-2) var(--space-3);
+}
+
+
+
+.home-main {
+    flex: 1;
+    padding: var(--space-6);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.home-modes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+.home-mode-card {
+    padding: var(--space-4);
+    gap: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 380px;
+    border: 1px solid var(--ui-border);
+    border-radius: 8px;
+}
+.home-mode-title {
+    text-align: center;
+    flex: 1;
+    font-size: var(--fs-h3);
+}
+.home-mode-description {
+    text-align: center;
+    font-size: var(--fs-desc);
+    line-height: 1.4;
+}
+.home-mode-card--one {
+    transition: 
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+.home-mode-card--one:hover {
+    transform: scale(1.02);
+    background-color: var(--mode1-bg);
+    box-shadow: 
+    0 0 10px var(--mode1-shadow),
+    0 0 20px var(--mode1-shadow);
+    border: 1px solid var(--mode1-shadow );
+}
+
+
+.home-footer {
+    flex-shrink: 0;
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+
+    font-size: var(--fs-small);
+    color: var(--ui-text);
+    opacity: 0.9;
+
+    border-top: 1px solid var(--ui-border);
+}
+
+/* ---------------------------------------------- */
+/* CONTACT SECTION                                */
+/* ---------------------------------------------- */
+
+.home-footer-contact {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.home-footer-contact li {
+    list-style: none;
+}
+
+.home-footer-contact a {
+    color: var(--ui-text);
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, text-shadow 0.2s ease;
+}
+
+.home-footer-contact a:hover {
+    opacity: 1;
+    text-shadow:
+        0 0 6px var(--ui-shadow),
+        0 0 12px var(--ui-shadow);
+}
+
+/* ---------------------------------------------- */
+/* CREDITS                                        */
+/* ---------------------------------------------- */
+
+.home-footer-credits {
+    font-size: var(--fs-mini);
+    opacity: 0.7;
+    user-select: none;
+}
+
+
+
 
 /* ========================================================================== */
 /*  GAME 1                                                                    */
