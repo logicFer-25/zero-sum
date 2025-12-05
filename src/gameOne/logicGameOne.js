@@ -20,7 +20,6 @@ const asignRandomValue = () => {
 
     for(let i = 0; i < 3; i++){
         randomValues.push(values[Math.floor(Math.random() * values.length)]);
-        console.log(randomValues)
     }
     return randomValues;
 }

@@ -1,4 +1,5 @@
 import { stateGlobal } from "./appState.js";
+import { scoreManager } from "./scoreManager.js";
 
 
 export function events () {
@@ -17,6 +18,7 @@ export function events () {
         }
 
         if (t.closest('.game1-back-btn')) {
+            scoreManager.resetScores();
             stateGlobal.setView(0);      
             document.body.style.backgroundColor = 'var(--ui-bg)';  
             return;
