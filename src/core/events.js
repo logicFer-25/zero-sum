@@ -7,16 +7,21 @@ export function events () {
         const t = e.target;
 
         if (t.closest('.home-mode-card--one')) {
-            console.log('mode one redy');
             stateGlobal.setView(1);
             document.body.style.backgroundColor = 'var(--mode1-bg)'
             return;
         }
 
         if (t.closest('.home-mode-card--two')) {
-            console.log('mode two redy')
             return;
         }
+
+        if (t.closest('.game1-back-btn')) {
+            stateGlobal.setView(0);      
+            document.body.style.backgroundColor = 'var(--ui-bg)';  
+            return;
+        }
+
     })
 
 }

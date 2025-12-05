@@ -304,9 +304,6 @@ button {
     text-shadow: 0 0 8px var(--ui-shadow);
 }
 
-/* ================================
-   GAMEPLAY AREA
-================================ */
 .game1-area-gamwplay {
     display: flex;
     justify-content: space-between;
@@ -314,9 +311,6 @@ button {
     gap: var(--space-6);
 }
 
-/* ================================
-   LISTA DE CARTAS (USUARIO & BOT)
-================================ */
 .game1-card-list {
     display: flex;
     flex-direction: column;
@@ -329,17 +323,24 @@ button {
     height: 190px;
     padding: var(--space-3);
     border-radius: 10px;
-    background: rgba(255,255,255,0.05);
+    background: var(--ui-text);
     border: 1px solid var(--ui-border);
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.15s ease, opacity 0.2s ease;
+    transition:
+     transform 0.15s ease,
+     box-shadow 0.15s ease,
+     opacity 0.2s ease;
 }
 
 .game1-card-inner:hover {
     transform: translateY(-4px);
+    box-shadow: 
+    0 0 5px var(--ui-shadow-slect),
+    0 0 15px var(--ui-shadow-slect),
+    0 0 20px var(--ui-shadow-slect);
 }
 
 .game1-card-img {
@@ -352,6 +353,8 @@ button {
     background-image: url('/assets/img/caed.jpg');
     background-size: cover;
     border: 1px solid var(--ui-border);
+    pointer-events: none;
+    user-select: none;
 }
 
 /* ================================
