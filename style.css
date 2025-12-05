@@ -220,6 +220,257 @@ button {
 /*  GAME 1                                                                    */
 /* ========================================================================== */
 
+
+
+
+
+#game1-view {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--mode1-bg);
+    color: var(--ui-text);
+}
+
+
+.game1-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 2px solid var(--ui-border);
+    flex-shrink: 0;
+}
+
+.game1-title {
+    font-size: var(--fs-h1);
+    text-shadow: 0 0 8px var(--ui-shadow);
+}
+
+.game1-back-btn {
+    font-size: var(--fs-body);
+    padding: var(--space-2) var(--space-3);
+    color: var(--ui-text);
+    border: 1px solid var(--ui-border);
+    border-radius: 4px;
+    background: transparent;
+
+    transition: 
+     background-color 0.2s ease,
+     color 0.2s ease;
+}
+
+.game1-back-btn:hover {
+    background-color: var(--ui-border);
+    color: var(--mode1-bg);
+}
+
+.game1-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+    gap: var(--space-6);
+    overflow-y: auto;
+}
+
+.game1-scoreboard {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--space-5);
+}
+
+.game1-score-card {
+    flex: 1;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--ui-border);
+    border-radius: 10px;
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    backdrop-filter: blur(4px);
+}
+
+.game1-score-title {
+    font-size: var(--fs-h3);
+}
+
+.game1-score-value {
+    font-size: var(--fs-h1);
+    text-shadow: 0 0 8px var(--ui-shadow);
+}
+
+/* ================================
+   GAMEPLAY AREA
+================================ */
+.game1-area-gamwplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-6);
+}
+
+/* ================================
+   LISTA DE CARTAS (USUARIO & BOT)
+================================ */
+.game1-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.game1-card-inner {
+    width: 130px;
+    height: 190px;
+    padding: var(--space-3);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--ui-border);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.15s ease, opacity 0.2s ease;
+}
+
+.game1-card-inner:hover {
+    transform: translateY(-4px);
+}
+
+.game1-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.game1-card-hidden {
+    background-image: url('/assets/img/caed.jpg');
+    background-size: cover;
+    border: 1px solid var(--ui-border);
+}
+
+/* ================================
+   VS - TARJETAS CENTRALES
+================================ */
+.game1-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-4) 0;
+}
+
+.game1-vs-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+.game1-card-slot {
+    width: 170px;
+    height: 230px;
+    background: rgba(255,255,255,0.06);
+    border: 1px dashed var(--ui-border);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-3);
+}
+
+.game1-vs-title {
+    font-size: var(--fs-h3);
+    opacity: 0.8;
+    text-shadow: 0 0 6px var(--ui-shadow);
+}
+
+/* ================================
+   ACCIONES (PLAY / RESET)
+================================ */
+.game1-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-4);
+}
+
+.game1-btn {
+    font-size: var(--fs-body);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--ui-border);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--ui-text);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.game1-btn:hover {
+    background-color: var(--ui-shadow);
+    color: var(--mode1-bg);
+    transform: translateY(-2px);
+}
+
+/* ================================
+   FOOTER
+================================ */
+.game1-footer {
+    flex-shrink: 0;
+    padding: var(--space-4) var(--space-5);
+    border-top: 1px solid var(--ui-border);
+    font-size: var(--fs-small);
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* ================================
+   RESPONSIVE (Mobile)
+================================ */
+
+@media (max-width: 768px) {
+
+    .game1-main {
+        padding: var(--space-4);
+    }
+
+    .game1-scoreboard {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .game1-area-gamwplay {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-6);
+    }
+
+    .game1-vs-divider {
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .game1-card-slot {
+        width: 150px;
+        height: 200px;
+    }
+
+    .game1-card-inner {
+        width: 110px;
+        height: 160px;
+    }
+
+    .game1-title {
+        font-size: calc(var(--fs-h1) - 0.4rem);
+    }
+}
+
+
+
+
+
+
 /* ========================================================================== */
 /*  GAME 2                                                                    */
 /* ========================================================================== */

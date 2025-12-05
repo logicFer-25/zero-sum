@@ -9,6 +9,7 @@ export function events () {
         if (t.closest('.home-mode-card--one')) {
             console.log('mode one redy');
             stateGlobal.setView(1);
+            document.body.style.backgroundColor = 'var(--mode1-bg)'
             return;
         }
 
