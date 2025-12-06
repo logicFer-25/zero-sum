@@ -19,7 +19,7 @@ class AppState {
     }
 
     setView(newView) {
-        if (this.view === newView) return;  // <= Evita renders innecesarios
+        if (this.view === newView) return; 
 
         this.view = newView;
         this.notify(newView);

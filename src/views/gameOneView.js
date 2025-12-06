@@ -55,12 +55,12 @@ export function renderGameOneView(appDiv) {
 }
 
 
-export const gameCard = (value , hidden = false) => {
+export const gameCard = (value, src , hidden = false) => {
     const card = document.createElement("article");
     card.className = "game1-card";
     card.innerHTML = `
-        <div class="game1-card-inner ${hidden ? "game1-card-hidden" : ""}" >
-            <img src=" ${hidden ? "" : value} " class="game1-card-img" >
+        <div class="game1-card-inner ${hidden ? "game1-card-hidden" : ""}" data-value="${value}" >
+            <img src=" ${hidden ? "" : src} " class="game1-card-img" data-value="${value}" >
         </div>
     `;
     return card;

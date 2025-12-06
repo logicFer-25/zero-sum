@@ -1,30 +1,15 @@
+
+import { scoreManager } from "../core/scoreManager.js";
 import { gameCard } from "../views/gameOneView.js";
 
 const values = [
-    {
-        id: "rock",
-        src: "/assets/img/piedra.png"
-    },
-    {
-        id: "paper",
-        src: "/assets/img/papel.png"
-    },
-    {
-        id: "scissors",
-        src: "/assets/img/tijeras.png"
-    },
-]
+    { id: "rock", src: "/assets/img/piedra.png" },
+    { id: "paper", src: "/assets/img/papel.png" },
+    { id: "scissors", src: "/assets/img/tijeras.png" },
+];
 
-const asignRandomValue = () => {
-    const randomValues = [];
-
-    for(let i = 0; i < 3; i++){
-        randomValues.push(values[Math.floor(Math.random() * values.length)]);
-    }
-    return randomValues;
-}
-
-
+let userValues = [];
+let botValues = [];
 
 export function renderCards() {
     const userSection = document.getElementById("game1-user-list");
@@ -33,21 +18,46 @@ export function renderCards() {
     userSection.innerHTML = "";
     botSection.innerHTML = "";
 
-    const userValues = asignRandomValue();
-    const botValues = asignRandomValue();
+    userValues = asignRandom();
+    botValues = asignRandom();
 
     userValues.forEach((item) => {
-        const cardElement = gameCard(item.src, false);
-        userSection.appendChild(cardElement);
+        userSection.appendChild(gameCard(item.id, item.src, false));
     });
 
     botValues.forEach((item) => {
-        const cardElement = gameCard(item.src, true);
-        botSection.appendChild(cardElement);
+        botSection.appendChild(gameCard(item.id, item.src, true));
     });
+}
 
-    return {
-        userValues,
-        botValues
-    };
+function asignRandom() {
+    const arr = [];
+    for (let i = 0; i < 3; i++) {
+        arr.push(values[Math.floor(Math.random() * values.length)]);
+    }
+    return arr;
+}
+
+export function handleUserChoice(choiceId) {
+    const botChoice = botValues[Math.floor(Math.random() * botValues.length)].id;
+    const result = compare(choiceId, botChoice);
+
+    if (result === "user") scoreManager.addUserPoint();
+    if (result === "bot") scoreManager.addBotPoint();
+
+    return { result, botChoice };
+}
+
+function compare(user, bot) {
+    if (user === bot) return "draw";
+
+    if (
+        (user === "rock" && bot === "scissors") ||
+        (user === "paper" && bot === "rock") ||
+        (user === "scissors" && bot === "paper")
+    ) {
+        return "user";
+    }
+
+    return "bot";
 }
