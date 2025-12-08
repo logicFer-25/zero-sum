@@ -23,6 +23,10 @@ let botValues = [];
 export function renderCards() {
     const userSection = document.getElementById("game1-user-list");
     const botSection = document.getElementById("game1-bot-list");
+    const slotUser  = document.querySelector(".game1-card-slot--user");
+    const slotBot  = document.querySelector(".game1-card-slot--bot");
+    slotUser.innerHTML = "";
+    slotBot.innerHTML = "";
 
     userSection.innerHTML = "";
     botSection.innerHTML = "";
@@ -78,4 +82,13 @@ export function getRandomBotCardElement() {
 
     const index = Math.floor(Math.random() * botCards.length);
     return botCards[index];
+}
+
+export function checkIfGameEnded() {
+    const userList = document.querySelector("#game1-user-list");
+    const remaining = userList.querySelectorAll(".game1-card").length;
+
+    if (remaining === 0) {
+        document.getElementById("game1-end-modal").classList.remove("hidden");
+    }
 }

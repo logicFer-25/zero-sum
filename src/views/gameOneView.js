@@ -49,6 +49,20 @@ export function renderGameOneView(appDiv) {
             </div>
 
         </main>
+
+
+        <div id="game1-end-modal" class="game1-modal hidden">
+            <div class="game1-modal-content">
+                <h2 class="game1-modal-title">Game Finished</h2>
+                <p class="game1-modal-text">What do you want to do?</p>
+
+                <div class="game1-modal-actions">
+                    <button class="game1-modal-btn game1-btn-restart">Restart</button>
+                    <button class="game1-modal-btn game1-btn-exit">Exit</button>
+                </div>
+            </div>
+        </div>
+
     `;
 
     appDiv.appendChild(container);

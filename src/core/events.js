@@ -1,4 +1,4 @@
-import { getRandomBotCardElement, handleUserChoice } from "../gameOne/logicGameOne.js";
+import { checkIfGameEnded, getRandomBotCardElement, handleUserChoice, renderCards } from "../gameOne/logicGameOne.js";
 import { moveCardToCenter, revealBotCard, updateCardUI, updateScoreUI } from "../gameOne/updateManager.js";
 import { stateGlobal } from "./appState.js";
 import { scoreManager } from "./scoreManager.js";
@@ -57,6 +57,34 @@ export function events () {
 
             updateScoreUI();
 
+            setTimeout(() => {
+                checkIfGameEnded();
+                return;
+
+            }, 3000)
+
+            return;
+        }
+
+        if (t.closest(".game1-btn-restart")) {
+            scoreManager.resetScores();
+            const modal = document.getElementById("game1-end-modal");
+            if (modal) {
+                modal.classList.add("hidden") 
+                return;
+            };
+            renderCards(); 
+            updateScoreUI();
+            return;
+        }
+        if (t.closest(".game1-btn-exit")) {
+            scoreManager.resetScores();
+            stateGlobal.setView(0);
+            const modal = document.getElementById("game1-end-modal");
+            if (modal) {
+                modal.classList.add("hidden")
+                return;
+            };
             return;
         }
 
