@@ -3,9 +3,18 @@ import { scoreManager } from "../core/scoreManager.js";
 import { gameCard } from "../views/gameOneView.js";
 
 const values = [
-    { id: "rock", src: "/assets/img/piedra.png" },
-    { id: "paper", src: "/assets/img/papel.png" },
-    { id: "scissors", src: "/assets/img/tijeras.png" },
+    {
+        id: "rock",
+        src: "../../assets/img/piedra.png"
+    },
+    { 
+        id: "paper",
+        src: "../../assets/img/papel.png" 
+    },
+    { 
+        id: "scissors", 
+        src: "../../assets/img/tijeras.png" 
+    },
 ];
 
 let userValues = [];
@@ -38,8 +47,7 @@ function asignRandom() {
     return arr;
 }
 
-export function handleUserChoice(choiceId) {
-    const botChoice = botValues[Math.floor(Math.random() * botValues.length)].id;
+export function handleUserChoice(choiceId,botChoice ) {
     const result = compare(choiceId, botChoice);
 
     if (result === "user") scoreManager.addUserPoint();
@@ -60,4 +68,14 @@ function compare(user, bot) {
     }
 
     return "bot";
+}
+
+
+export function getRandomBotCardElement() {
+    const botCards = document.querySelectorAll("#game1-bot-list .game1-card");
+
+    if (botCards.length === 0) return null;
+
+    const index = Math.floor(Math.random() * botCards.length);
+    return botCards[index];
 }

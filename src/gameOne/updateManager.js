@@ -14,3 +14,26 @@ export function updateScoreUI() {
     userScoreEl.textContent = scoreManager.getUserScore();
     botScoreEl.textContent = scoreManager.getBotScore();
 }
+
+
+export function revealBotCard(cardElement) {
+    const inner = cardElement.querySelector(".game1-card-inner");
+    const img = cardElement.querySelector(".game1-card-img");
+
+    const realSrc = inner.dataset.src;
+
+    inner.classList.remove("game1-card-hidden");
+    inner.dataset.hidden = "false";
+
+    img.src = realSrc;
+}
+
+export function moveCardToCenter(cardElement, slotSelector) {
+    const slot = document.querySelector(slotSelector);
+
+    if (!slot) return;
+
+    slot.innerHTML = "";
+
+    slot.appendChild(cardElement);
+}

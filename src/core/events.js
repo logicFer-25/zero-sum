@@ -1,5 +1,5 @@
-import { handleUserChoice } from "../gameOne/logicGameOne.js";
-import { updateCardUI, updateScoreUI } from "../gameOne/updateManager.js";
+import { getRandomBotCardElement, handleUserChoice } from "../gameOne/logicGameOne.js";
+import { moveCardToCenter, revealBotCard, updateCardUI, updateScoreUI } from "../gameOne/updateManager.js";
 import { stateGlobal } from "./appState.js";
 import { scoreManager } from "./scoreManager.js";
 
@@ -26,17 +26,40 @@ export function events () {
             return;
         }
 
+
         if (t.closest('.game1-card-inner')) {
-            if (t.classList.contains('game1-card-hidden')) return;
 
-            updateCardUI(t.closest('.game1-card-inner'));
+            const clickedInner = t.closest('.game1-card-inner');
 
-            handleUserChoice(t.dataset.value);
+            if (clickedInner.dataset.hidden === "true") return;
+
+            updateCardUI(clickedInner);
+
+            const botCardEl = getRandomBotCardElement();
+            const botInner = botCardEl.querySelector(".game1-card-inner");
+
+            handleUserChoice(
+                clickedInner.dataset.value,
+                botInner.dataset.value
+            );
+
+            revealBotCard(botCardEl);
+
+            moveCardToCenter(
+                clickedInner.parentElement,
+                ".game1-card-slot--user"
+            );
+
+            moveCardToCenter(
+                botCardEl,
+                ".game1-card-slot--bot"
+    );
 
             updateScoreUI();
 
             return;
         }
+
 
 
     })
