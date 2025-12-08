@@ -67,7 +67,7 @@ export const gameCard = (value, src, hidden = false) => {
             data-hidden="${hidden}"
         >
             <img 
-                src="${hidden ? "../../assets/img/caed.jpg" : src}" 
+                src="${hidden ? "" : src}" 
                 class="game1-card-img"
                 data-value="${value}"
             >

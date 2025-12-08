@@ -351,7 +351,7 @@ button {
 }
 
 .game1-card-hidden {
-    background-image: url('/assets/img/caed.jpg');
+    background-image: url('/assets/img/card.jpg');
     background-size: cover;
     border: 1px solid var(--ui-border);
     pointer-events: none;
@@ -485,4 +485,25 @@ button {
 
 
 @media (max-width: 425px) {
+}
+
+
+
+
+/* Estado base y transición */
+.game1-card {
+    transition: transform 0.4s ease-in-out;
+    will-change: transform;
+}
+
+/* Clase temporal que se aplica para iniciar animación */
+.game1-card-animating {
+    position: absolute !important;
+    z-index: 999;
+    pointer-events: none;
+}
+
+/* Clase final cuando ya está dentro del slot */
+.game1-card-slot .game1-card {
+    transition: transform 0.4s ease-in-out;
 }

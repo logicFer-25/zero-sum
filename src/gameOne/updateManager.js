@@ -28,12 +28,41 @@ export function revealBotCard(cardElement) {
     img.src = realSrc;
 }
 
+
 export function moveCardToCenter(cardElement, slotSelector) {
     const slot = document.querySelector(slotSelector);
-
     if (!slot) return;
 
-    slot.innerHTML = "";
+    const oldRect = cardElement.getBoundingClientRect();
 
-    slot.appendChild(cardElement);
+    cardElement.classList.add("game1-card-animating");
+
+    cardElement.style.position = "absolute";
+    cardElement.style.top = oldRect.top + "px";
+    cardElement.style.left = oldRect.left + "px";
+    cardElement.style.width = oldRect.width + "px";
+    cardElement.style.height = oldRect.height + "px";
+
+    document.body.appendChild(cardElement);
+
+    requestAnimationFrame(() => {
+        const newRect = slot.getBoundingClientRect();
+
+        const dx = newRect.left - oldRect.left;
+        const dy = newRect.top - oldRect.top;
+
+        cardElement.style.transform = `translate(${dx}px, ${dy}px)`;
+
+        cardElement.addEventListener(
+            "transitionend",
+            () => {
+                cardElement.classList.remove("game1-card-animating");
+                cardElement.style = ""; 
+
+                slot.innerHTML = "";
+                slot.appendChild(cardElement);
+            },
+            { once: true }
+        );
+    });
 }
