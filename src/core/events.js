@@ -16,10 +16,11 @@ export function events () {
         }
 
         if (t.closest('.home-mode-card--two')) {
+            stateGlobal.setView(2);
             return;
         }
 
-        if (t.closest('.game1-back-btn')) {
+        if (t.closest('.game-back-btn')) {
             scoreManager.resetScores();
             stateGlobal.setView(0);      
             document.body.style.backgroundColor = 'var(--ui-bg)';  
@@ -68,13 +69,13 @@ export function events () {
 
         if (t.closest(".game1-btn-restart")) {
             scoreManager.resetScores();
+            renderCards(); 
+            updateScoreUI();
             const modal = document.getElementById("game1-end-modal");
             if (modal) {
                 modal.classList.add("hidden") 
                 return;
             };
-            renderCards(); 
-            updateScoreUI();
             return;
         }
         if (t.closest(".game1-btn-exit")) {
@@ -87,6 +88,7 @@ export function events () {
             };
             return;
         }
+
 
 
 

@@ -9,7 +9,7 @@ export function renderGameOneView(appDiv) {
     container.innerHTML = `
         <header class="game1-header">
             <h1 class="game1-title">Card Duel</h1>
-            <button class="game1-back-btn">← Back</button>
+            <button class="game-back-btn">← Back</button>
         </header>
 
         <main class="game1-main">

@@ -1,5 +1,6 @@
 import { renderCards } from "../gameOne/logicGameOne.js";
 import { renderGameOneView } from "./gameOneView.js";
+import { renderGameTwoView } from "./gameTwoView.js";
 import { renderHomeView } from "./homeView.js";
 
 
@@ -20,7 +21,8 @@ export function renderUI(view) {
     };
 
 
-    if (view === 3) {
+    if (view === 2) {
+        renderGameTwoView(appDiv);
         return;
     };
 }

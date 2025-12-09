@@ -26,8 +26,10 @@ export function renderHomeView(appDiv) {
                 </article>
 
                 <article class="home-mode-card  home-mode-card--two">
-                    <h2 class="home-mode-title"> Game mode 2 </h2>
-                    <p class="home-mode-description">  </p>
+                    <h2 class="home-mode-title"> RPS Minus One </h2>
+                    <p class="home-mode-description">
+                        Choose two moves, then discard one under pressure. Your final choice faces the bot—choose wisely or lose by timeout.
+                    </p>
                 </article>
 
             </section>
