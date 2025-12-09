@@ -23,7 +23,7 @@
 @font-face {
     font-family: 'Montserrat';
     src: local('Montserrat'),
-         url('/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+         url('assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -39,9 +39,13 @@
     --mode1-bg: #121224;
     --mode1-bg-modal: #121224aa;
     --mode1-shadow: #E0476B;
-
-    --mode2-bg: #0f1325;
-    --mode2-shadow: #5c7cff;
+    
+    --mode2-bg: #121224;
+    --mode2-shadow: #137a67;
+    --mode2-circle-bg: #f1f4c6;
+    
+    --mode2-bg: #163a37;
+    --mode2-shadow: #077d91;
 
     --ui-shadow-soft: 
     0 0 10px var(--ui-shadow),
@@ -158,6 +162,23 @@ button {
     border: 1px solid var(--mode1-shadow );
 }
 
+.home-mode-card--two {
+    transition: 
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.home-mode-card--two:hover {
+    transform: scale(1.02);
+    background-color: var(--mode1-bg);
+    box-shadow: 
+    0 0 10px var(--mode2-shadow),
+    0 0 20px var(--mode2-shadow);
+    border: 1px solid var(--mode2-shadow );
+    
+}
+
 
 .home-footer {
     flex-shrink: 0;
@@ -249,7 +270,7 @@ button {
     text-shadow: 0 0 8px var(--ui-shadow);
 }
 
-.game1-back-btn {
+.game-back-btn {
     font-size: var(--fs-body);
     padding: var(--space-2) var(--space-3);
     color: var(--ui-text);
@@ -262,7 +283,7 @@ button {
      color 0.2s ease;
 }
 
-.game1-back-btn:hover {
+.game-back-btn:hover {
     background-color: var(--ui-border);
     color: var(--mode1-bg);
 }
@@ -393,84 +414,6 @@ button {
     text-shadow: 0 0 6px var(--ui-shadow);
 }
 
-/* ================================
-   ACCIONES (PLAY / RESET)
-================================ */
-.game1-actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-}
-
-.game1-btn {
-    font-size: var(--fs-body);
-    padding: var(--space-3) var(--space-4);
-    border: 1px solid var(--ui-border);
-    border-radius: 6px;
-    background: transparent;
-    color: var(--ui-text);
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
-}
-
-.game1-btn:hover {
-    background-color: var(--ui-shadow);
-    color: var(--mode1-bg);
-    transform: translateY(-2px);
-}
-
-/* ================================
-   FOOTER
-================================ */
-.game1-footer {
-    flex-shrink: 0;
-    padding: var(--space-4) var(--space-5);
-    border-top: 1px solid var(--ui-border);
-    font-size: var(--fs-small);
-    opacity: 0.8;
-    text-align: center;
-}
-
-/* ================================
-   RESPONSIVE (Mobile)
-================================ */
-
-@media (max-width: 768px) {
-
-    .game1-main {
-        padding: var(--space-4);
-    }
-
-    .game1-scoreboard {
-        flex-direction: column;
-        gap: var(--space-4);
-    }
-
-    .game1-area-gamwplay {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space-6);
-    }
-
-    .game1-vs-divider {
-        flex-direction: column;
-        gap: var(--space-4);
-    }
-
-    .game1-card-slot {
-        width: 150px;
-        height: 200px;
-    }
-
-    .game1-card-inner {
-        width: 110px;
-        height: 160px;
-    }
-
-    .game1-title {
-        font-size: calc(var(--fs-h1) - 0.4rem);
-    }
-}
-
 
 
 
@@ -553,6 +496,219 @@ button {
 /* ========================================================================== */
 /*  GAME 2                                                                    */
 /* ========================================================================== */
+
+/* ===========================
+   GENERAL LAYOUT
+=========================== */
+
+#game2-view {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    color: var(--text-color);
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.game2-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1rem;
+}
+
+.game2-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+
+/* ===========================
+   SCOREBOARD
+=========================== */
+
+.game2-scoreboard {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.game2-score-card {
+    background: rgba(255,255,255,0.1);
+    padding: 1rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(5px);
+}
+
+.game2-score-title {
+    font-size: 1.2rem;
+    opacity: .8;
+}
+
+.game2-score-value {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+/* ===========================
+   MAIN CONTENT
+=========================== */
+
+.game2-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ===========================
+   OPTION LISTS (user & bot)
+=========================== */
+
+.game2-card-list {
+    display: flex;
+    justify-content: center;
+}
+
+.game2-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.game2-option {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--mode2-circle-bg, #fafafa);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .25s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.game2-option:hover {
+    transform: scale(1.07);
+    box-shadow: 
+    0 0 10px var(--mode2-shadow),
+    0 0 20px var(--mode2-shadow);
+    
+}
+
+.game2-option-img {
+    width: 70%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* ===========================
+   GAMEPLAY AREA (NEW DESIGN)
+=========================== */
+
+.game2-area-gamwplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* ====== CIRCULAR DUEL ZONE ====== */
+
+.game2-cards {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.game2-vs-divider {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* User & Bot circles */
+
+.game2-card-slot {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: var(--mode2-circle-bg, #fff);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: .3s ease;
+    overflow: hidden;
+}
+
+.game2-card-slot.game2-card-slot--user {
+    background: radial-gradient(circle at 30% 30%, #ffffff, #d6e8ff);
+}
+
+.game2-card-slot.game2-card-slot--bot {
+    background: radial-gradient(circle at 30% 30%, #ffffff, #ffd6d6);
+}
+
+/* Inserted option inside slot */
+.game2-card-slot img {
+    width: 70%;
+    height: auto;
+    transition: .3s ease;
+}
+
+/* VS Title */
+.game2-vs-title {
+    font-size: 2rem;
+    font-weight: 700;
+    opacity: .7;
+}
+
+/* ===========================
+   ANIMATION FOR CARD ENTERING CIRCLE
+=========================== */
+
+@keyframes dropIntoCircle {
+    0% {
+        transform: scale(0.4) translateY(-15px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.game2-card-slot img.game2-enter {
+    animation: dropIntoCircle 0.4s ease forwards;
+}
+
+/* ===========================
+   OPTIONAL: highlight during countdown
+=========================== */
+
+.game2-card-slot.countdown-pulse {
+    animation: pulseSlot 1s infinite alternate ease-in-out;
+}
+
+@keyframes pulseSlot {
+    0% { box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
+    100% { box-shadow: 0 0 20px rgba(255, 150, 0, 0.7); }
+}
+
+
 
 /* ========================================================================== */
 /*  MOBILE                                                                    */
