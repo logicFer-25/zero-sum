@@ -23,7 +23,7 @@
 @font-face {
     font-family: 'Montserrat';
     src: local('Montserrat'),
-         url('assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+         url('./assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;
@@ -660,6 +660,10 @@ button {
 
 .game2-card-slot.game2-card-slot--bot {
     background: radial-gradient(circle at 30% 30%, #ffffff, #ffd6d6);
+}
+
+.game2-option--selected {
+    background-color: var(--mode2-shadow);
 }
 
 /* Inserted option inside slot */

@@ -1,5 +1,6 @@
 import { checkIfGameEnded, getRandomBotCardElement, handleUserChoice, renderCards } from "../gameOne/logicGameOne.js";
 import { moveCardToCenter, revealBotCard, updateCardUI, updateScoreUI } from "../gameOne/updateManager.js";
+import { initGameTwoLogic, userDiscard } from "../gameTwo/logicGameTwo.js";
 import { stateGlobal } from "./appState.js";
 import { scoreManager } from "./scoreManager.js";
 
@@ -89,7 +90,15 @@ export function events () {
             return;
         }
 
+        if ( t.closest('.game2-option') ) {
+            const selectedOption = t.closest('.game2-option');
 
+            initGameTwoLogic( selectedOption.dataset.value );
+
+            userDiscard( selectedOption.dataset.value );
+
+            return;
+        }
 
 
     })
