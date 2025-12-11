@@ -10,7 +10,7 @@ export function renderHomeView(appDiv) {
         <header class="home-header">
             <h1 class="home-title"> Zero Sum </h1>
             <a class="home-link" href="https://github.com/logicFer-25/zero-sum" target="_blank" rel="noopener noreferrer">
-                <img src="../../assets/img/github-mark-white.svg" width="32px">
+                <img src="./assets/img/github-mark-white.svg" width="32px">
             </a>
         </header>
 

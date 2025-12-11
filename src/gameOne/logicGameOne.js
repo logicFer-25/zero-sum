@@ -5,15 +5,15 @@ import { gameCard } from "../views/gameOneView.js";
 const values = [
     {
         id: "rock",
-        src: "../../assets/img/piedra.png"
+        src: "./assets/img/piedra.png"
     },
     { 
         id: "paper",
-        src: "../../assets/img/papel.png" 
+        src: "./assets/img/papel.png" 
     },
     { 
         id: "scissors", 
-        src: "../../assets/img/tijeras.png" 
+        src: "./assets/img/tijeras.png" 
     },
 ];
 

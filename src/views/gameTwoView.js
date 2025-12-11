@@ -31,13 +31,13 @@ export function renderGameTwoView(appDiv) {
                 <section id="game2-user-list" class="game2-card-list">
                     <div class="game2-items">
                         <article class="game2-option" data-value="rock">
-                            <img src="../../assets/img/piedra.png" class="game2-option-img" data-value="rock" >
+                            <img src="./assets/img/piedra.png" class="game2-option-img" data-value="rock" >
                         </article>
                         <article class="game2-option" data-value="paper">
-                            <img src="../../assets/img/papel.png" class="game2-option-img" data-value="paper" >
+                            <img src="./assets/img/papel.png" class="game2-option-img" data-value="paper" >
                         </article>
                         <article class="game2-option" data-value="scissors">
-                            <img src="../../assets/img/tijeras.png" class="game2-option-img" data-value="scissors" >
+                            <img src="./assets/img/tijeras.png" class="game2-option-img" data-value="scissors" >
                         </article>
                     </div>
                 </section>
@@ -46,13 +46,13 @@ export function renderGameTwoView(appDiv) {
                 <section id="game2-bot-list" class="game2-card-list">
                     <div class="game2-items">
                         <article class="game2-option" data-value="rock">
-                            <img src="../../assets/img/piedra.png" class="game2-option-img" data-value="rock" >
+                            <img src="./assets/img/piedra.png" class="game2-option-img" data-value="rock" >
                         </article>
                         <article class="game2-option" data-value="paper">
-                            <img src="../../assets/img/papel.png" class="game2-option-img" data-value="paper" >
+                            <img src="./assets/img/papel.png" class="game2-option-img" data-value="paper" >
                         </article>
                         <article class="game2-option" data-value="scissors">
-                            <img src="../../assets/img/tijeras.png" class="game2-option-img" data-value="scissors" >
+                            <img src="./assets/img/tijeras.png" class="game2-option-img" data-value="scissors" >
                         </article>
                     </div>
                 </section>
