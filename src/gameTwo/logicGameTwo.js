@@ -1,28 +1,38 @@
-let userChoices = [];
-let botChoices = [];
+import { scoreManager } from "../core/scoreManager.js";
+import { 
+    markOption,
+    hideDiscarded,
+    highlightFinalChoice,
+    resetStylesGameTwo,
+    updateScoreUITwo
+} from "./updateManagerTwo.js";
+
+let userChoices = [];   // Máximo 2
+let botChoices = [];    // Máximo 2
 let roundLocked = false;
 
 let discardPhase = false;
 let discardTimer = null;
-const DISCARD_TIME_LIMIT = 5000; // 5s por ejemplo
+const DISCARD_TIME_LIMIT = 5000;
+const RESET_DELAY = 3000;  // <-- Tiempo real que definiste
 
-export function initGameTwoLogic(choice) {
+
+export function initGameTwoLogic(elment) {
     if (roundLocked || discardPhase) return;
 
+    const value = elment.dataset.value;
+
     if (userChoices.length < 2) {
-        userChoices.push(choice);
-        return;
-    }
+        userChoices.push(value);
+        markOption(elment);
 
-    if (userChoices.length === 2) {
-        roundLocked = true;
-        botChoices = generateBotChoices();
 
-        console.log('user:', userChoices);
-        console.log('bot:', botChoices);
-
-        startDiscardPhase();
-        return;
+        if (userChoices.length === 2) {
+            roundLocked = true;
+            botChoices = generateBotChoices();
+            startDiscardPhase();
+        }
+        
     }
 }
 
@@ -33,86 +43,93 @@ function generateBotChoices() {
 
     for (let i = 0; i < 2; i++) {
         const randomIndex = Math.floor(Math.random() * botList.length);
-        arr.push(botList[randomIndex].dataset.value);
+        const card = botList[randomIndex];
+
+        markOption(card); // <-- visible
+        arr.push(card.dataset.value);
     }
 
     return arr;
 }
 
+
 function startDiscardPhase() {
     discardPhase = true;
 
-    // El bot descarta automáticamente
-    botChoices = discardBotOption(botChoices);
+    botChoices = discardBotOption([...botChoices]);
+    applyBotDiscardUI(botChoices);
 
-    // Timer para el usuario
-    discardTimer = setTimeout(() => {
-        handleUserTimeout();
-    }, DISCARD_TIME_LIMIT);
+    discardTimer = setTimeout(handleUserTimeout, DISCARD_TIME_LIMIT);
 }
 
 
 function discardBotOption(arr) {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    const newArr = [...arr];
-    newArr.splice(randomIndex, 1); // elimina 1 opción
-    return newArr;
+    const index = Math.floor(Math.random() * arr.length);
+    arr.splice(index, 1);
+    return arr; // queda 1
 }
 
-export function userDiscard(choiceToRemove) {
+
+function applyBotDiscardUI(botFinal) {
+    const items = document.querySelectorAll("#game2-bot-list .game2-option");
+
+    items.forEach(card => {
+        if (!botFinal.includes(card.dataset.value)) {
+            hideDiscarded(card);
+        }
+    });
+
+    items.forEach(card => {
+        if (botFinal.includes(card.dataset.value)) {
+            highlightFinalChoice(card);
+        }
+    });
+}
+
+
+export function userDiscard(elment) {
     if (!discardPhase) return;
+    const value = elment.dataset.value;
+    const index = userChoices.filter(v => v === value);
+    if (index === -1) return;
 
-    const idx = userChoices.indexOf(choiceToRemove);
-    if (idx === -1) return;
+    userChoices.splice(index, 1);
 
-    // quitar carta
-    userChoices.splice(idx, 1);
-
-    // cancelamos el timer
+    hideDiscarded(elment);
     clearTimeout(discardTimer);
 
     discardPhase = false;
 
-    console.log("Usuario descartó:", choiceToRemove);
-    console.log("USER final:", userChoices);
-    console.log("BOT final:", botChoices);
-
-    compareChoices();
+    highlightUserFinalChoice(userChoices[0]);
+    finalizeRound();
 }
 
 
+function highlightUserFinalChoice(finalValue) {
+    const cards = document.querySelectorAll("#game2-user-list .game2-option");
+
+    cards.forEach(card => {
+        if (card.dataset.value === finalValue) {
+            highlightFinalChoice(card);
+        }
+    });
+}
 
 function handleUserTimeout() {
     discardPhase = false;
 
-    // el usuario pierde automáticamente
-    console.log("El usuario tardó demasiado. Pierde.");
-
-    // aquí puedes emitir un evento o llamar a una función externa
-    // example: roundResult("bot");
+    scoreManager.addBotPoint();
+    updateScoreUITwo();
 
     resetRound();
 }
 
-
-function resetRound() {
-    userChoices = [];
-    botChoices = [];
-    roundLocked = false;
-    discardPhase = false;
-    clearTimeout(discardTimer);
-}
-
-function compareChoices() {
-    if (userChoices.length !== 1 || botChoices.length !== 1) {
-        console.warn("No se puede comparar — faltan opciones.");
-        return;
-    }
+function finalizeRound() {
+    if (userChoices.length !== 1 || botChoices.length !== 1) return;
 
     const user = userChoices[0];
     const bot = botChoices[0];
 
-    console.log(`Comparando -> USER: ${user}  vs  BOT: ${bot}`);
 
     let winner = null;
 
@@ -128,13 +145,31 @@ function compareChoices() {
         winner = "bot";
     }
 
-    console.log("Ganador:", winner);
 
-    // Aquí puedes llamar a tu UI:
-    // updateScoreUI(winner)
-    // showRoundResultModal(winner)
-    // animateCards(user, bot, winner)
+    if (winner === "user") scoreManager.addUserPoint();
+    if (winner === "bot") scoreManager.addBotPoint();
 
-    resetRound();
-    return winner;
+    updateScoreUITwo();
+    delayedResetRound();
+}
+
+function delayedResetRound() {
+
+    setTimeout(() => {
+        resetRound();
+    }, RESET_DELAY);
+}
+
+
+/* Limpieza total de la ronda */
+function resetRound() {
+    resetStylesGameTwo();
+
+    userChoices = [];
+    botChoices = [];
+    roundLocked = false;
+    discardPhase = false;
+
+    clearTimeout(discardTimer);
+
 }

@@ -92,10 +92,11 @@ export function events () {
 
         if ( t.closest('.game2-option') ) {
             const selectedOption = t.closest('.game2-option');
+            
+            userDiscard( selectedOption );
+            
+            initGameTwoLogic( selectedOption );
 
-            initGameTwoLogic( selectedOption.dataset.value );
-
-            userDiscard( selectedOption.dataset.value );
 
             return;
         }

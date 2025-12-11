@@ -42,17 +42,6 @@ export function renderGameTwoView(appDiv) {
                     </div>
                 </section>
 
-                <section class="game2-cards">
-                    <div class="game2-vs-divider">                    
-                        <article class="game2-card-slot game2-card-slot--user">
-                        </article>
-                
-                        <h2 class="game2-vs-title">VS</h2>
-                
-                        <article class="game2-card-slot game2-card-slot--bot">
-                        </article>
-                    </div>
-                </section>
 
                 <section id="game2-bot-list" class="game2-card-list">
                     <div class="game2-items">

@@ -197,10 +197,6 @@ button {
     border-top: 1px solid var(--ui-border);
 }
 
-/* ---------------------------------------------- */
-/* CONTACT SECTION                                */
-/* ---------------------------------------------- */
-
 .home-footer-contact {
     display: flex;
     align-items: center;
@@ -224,10 +220,6 @@ button {
         0 0 6px var(--ui-shadow),
         0 0 12px var(--ui-shadow);
 }
-
-/* ---------------------------------------------- */
-/* CREDITS                                        */
-/* ---------------------------------------------- */
 
 .home-footer-credits {
     font-size: var(--fs-mini);
@@ -373,7 +365,7 @@ button {
 }
 
 .game1-card-hidden {
-    background-image: url('/assets/img/card.jpg');
+    background-image: url('./assets/img/card.jpg');
     background-size: cover;
     border: 1px solid var(--ui-border);
     pointer-events: none;
@@ -611,18 +603,14 @@ button {
     pointer-events: none;
 }
 
-/* ===========================
-   GAMEPLAY AREA (NEW DESIGN)
-=========================== */
 
 .game2-area-gamwplay {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     gap: 2rem;
 }
 
-/* ====== CIRCULAR DUEL ZONE ====== */
 
 .game2-cards {
     flex: 1;
@@ -630,88 +618,20 @@ button {
     justify-content: center;
 }
 
-.game2-vs-divider {
-    width: 100%;
-    max-width: 380px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* User & Bot circles */
-
-.game2-card-slot {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    background: var(--mode2-circle-bg, #fff);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    transition: .3s ease;
-    overflow: hidden;
-}
-
-.game2-card-slot.game2-card-slot--user {
-    background: radial-gradient(circle at 30% 30%, #ffffff, #d6e8ff);
-}
-
-.game2-card-slot.game2-card-slot--bot {
-    background: radial-gradient(circle at 30% 30%, #ffffff, #ffd6d6);
-}
 
 .game2-option--selected {
     background-color: var(--mode2-shadow);
+    transition: 
+    transform .3s ease-out;
+}
+.game2-option--disabled{
+    background-color: var(--mode1-shadow);
 }
 
-/* Inserted option inside slot */
-.game2-card-slot img {
-    width: 70%;
-    height: auto;
-    transition: .3s ease;
+
+.game2-option--final {
+    background-color: var(--ui-shadow);
 }
-
-/* VS Title */
-.game2-vs-title {
-    font-size: 2rem;
-    font-weight: 700;
-    opacity: .7;
-}
-
-/* ===========================
-   ANIMATION FOR CARD ENTERING CIRCLE
-=========================== */
-
-@keyframes dropIntoCircle {
-    0% {
-        transform: scale(0.4) translateY(-15px);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
-}
-
-.game2-card-slot img.game2-enter {
-    animation: dropIntoCircle 0.4s ease forwards;
-}
-
-/* ===========================
-   OPTIONAL: highlight during countdown
-=========================== */
-
-.game2-card-slot.countdown-pulse {
-    animation: pulseSlot 1s infinite alternate ease-in-out;
-}
-
-@keyframes pulseSlot {
-    0% { box-shadow: 0 0 10px rgba(255, 150, 0, 0.4); }
-    100% { box-shadow: 0 0 20px rgba(255, 150, 0, 0.7); }
-}
-
 
 
 /* ========================================================================== */
@@ -721,3 +641,4 @@ button {
 
 @media (max-width: 425px) {
 }
+
