@@ -41,9 +41,14 @@ export function renderHomeView(appDiv) {
             <section class="home-footer-contact">
                 <h3 class="home-footer-title">Contact</h3>
                 <ul class="home-footer-list">
-                    <li><a href="mailto:tucorreo@gmail.com" class="home-footer-link">tucorreo@gmail.com</a></li>
-                    <li><a href="https://www.linkedin.com/in/tu-linkedin" target="_blank" rel="noopener noreferrer" class="home-footer-link">LinkedIn</a></li>
-                    <li><a href="https://github.com/LogicFer" target="_blank" rel="noopener noreferrer" class="home-footer-link">GitHub Profile</a></li>
+                    <li>
+                        <a href="mailto:victoriafloresfederico@gmail.com" class="home-footer-link">victoriafloresfederico@gmail.com</a></li>
+                    <li>
+                        <a 
+                        href="https://www.linkedin.com/in/federico-victoria-flores-b66884397?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
+                        target="_blank" rel="noopener noreferrer" class="home-footer-link">Linkedin</a></li>
+                    <li>
+                        <a href="https://github.com/LogicFer-25" target="_blank" rel="noopener noreferrer" class="home-footer-link">GitHub </a></li>
                 </ul>
             </section>
 
