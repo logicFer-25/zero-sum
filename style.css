@@ -84,6 +84,7 @@ button {
 /* ========================================================================== */
 /*  INTERFACE                                                                 */
 /* ========================================================================== */
+
 #home-view {
     width: 100%;
     min-height: 100vh;
@@ -228,15 +229,9 @@ button {
 }
 
 
-
-
 /* ========================================================================== */
 /*  GAME 1                                                                    */
 /* ========================================================================== */
-
-
-
-
 
 #game1-view {
     width: 100%;
@@ -407,22 +402,17 @@ button {
 }
 
 
-
-
-/* Estado base y transición */
 .game1-card {
     transition: transform 0.4s ease-in-out;
     will-change: transform;
 }
 
-/* Clase temporal que se aplica para iniciar animación */
 .game1-card-animating {
     position: absolute !important;
     z-index: 999;
     pointer-events: none;
 }
 
-/* Clase final cuando ya está dentro del slot */
 .game1-card-slot .game1-card {
     transition: transform 0.4s ease-in-out;
 }
@@ -478,12 +468,6 @@ button {
     background-color: var(--ui-shadow);
     color: var(--mode1-bg);
 }
-
-
-
-
-
-
 
 /* ========================================================================== */
 /*  GAME 2                                                                    */
@@ -640,5 +624,34 @@ button {
 
 
 @media (max-width: 425px) {
+
+    .home-modes {
+        flex-direction: column;
+    }
+
+    .home-mode-card {
+        width: 100% !important;
+        height: 280px;
+    }
+
+    .game1-area-gamwplay{
+        flex-direction: column;
+    }
+
+    .game1-card-list {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .game1-card-inner {
+        width: 80px;
+        height: 140px;
+    }
+
+    .game1-card-slot {
+        width: 120px;
+        height: 180px;
+    }
 }
 
